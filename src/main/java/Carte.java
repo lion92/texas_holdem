@@ -1,14 +1,6 @@
 import java.util.Objects;
 
-public class Carte {
-    private final String valeur;
-    private final String couleur;
-
-    public Carte(String valeur, String couleur) {
-        this.valeur = valeur;
-        this.couleur = couleur;
-    }
-
+public record Carte(String valeur, String couleur) {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
