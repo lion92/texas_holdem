@@ -1,5 +1,9 @@
 public enum CouleurName {
-    SPADES("S"), HEART("H"), DIAMOND("D"), CLUMBS("C");
+    CLUMBS("C"),
+    SPADES("S"),
+    DIAMOND("D"),
+    HEART("H"),
+    ;
 
     private final String denomination;
 

@@ -20,10 +20,10 @@ public class Couleur {
     }
 
     private List<Carte> getAllSameColorCards(String couleur) {
-        ArrayList<Carte> cardClubs = new ArrayList<>();
+        ArrayList<Carte> cards = new ArrayList<>();
         EnumSet.allOf(ValeurName.class)
                 .forEach((valeurName ->
-                        cardClubs.add(new Carte(valeurName.getDenomination(), couleur))));
-        return cardClubs;
+                        cards.add(new Carte(valeurName.getDenomination(), couleur))));
+        return cards;
     }
 }
