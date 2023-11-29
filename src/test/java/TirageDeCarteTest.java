@@ -142,5 +142,29 @@ public class TirageDeCarteTest {
         assertFalse(new JeuDeCarte().isCarreFor(cards,"3"));
     }
 
+    @Test
+    void should_say_if_a_hand_has_a_couleur_heart() {
+        List<Card> cards=new ArrayList<>();
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.HEART.getDenomination()));
+        cards.add(new Card(ValeurName.TROIS.getDenomination(), CouleurName.HEART.getDenomination()));
+        cards.add(new Card(ValeurName.QUATRE.getDenomination(), CouleurName.HEART.getDenomination()));
+        cards.add(new Card(ValeurName.KING.getDenomination(), CouleurName.HEART.getDenomination()));
+        cards.add(new Card(ValeurName.HUIT.getDenomination(), CouleurName.HEART.getDenomination()));
 
+        assertTrue(new JeuDeCarte().isCoulorFor(cards,"H"));
+
+    }
+
+    @Test
+    void should_say_if_a_hand_has_a_couleur_clumbs() {
+        List<Card> cards=new ArrayList<>();
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+        cards.add(new Card(ValeurName.TROIS.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+        cards.add(new Card(ValeurName.QUATRE.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+        cards.add(new Card(ValeurName.KING.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+        cards.add(new Card(ValeurName.HUIT.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+
+        assertTrue(new JeuDeCarte().isCoulorFor(cards,"C"));
+
+    }
 }

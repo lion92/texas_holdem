@@ -17,7 +17,6 @@ public class JeuDeCarte {
         return cartes;
     }
 
-
     public final List<Card> shuffle() {
         List<Card> cards = getCards();
         Collections.shuffle(cards);
@@ -44,7 +43,6 @@ public class JeuDeCarte {
         return whiteHands;
     }
 
-
     public boolean isPairFor(List<Card> cards, String valeur) {
         return isCardPresentFor(cards, valeur, 2);
     }
@@ -53,7 +51,30 @@ public class JeuDeCarte {
         return isCardPresentFor(cards, valeur, 3);
     }
 
-    private boolean isCardPresentFor(List<Card> cards, String valeur, int i2) {
+    public boolean isCarreFor(List<Card> cards, String valeur) {
+        return isCardPresentFor(cards, valeur, 4);
+    }
+
+    public boolean isCoulorFor(List<Card> cards, String couleur) {
+        return isCardPresentCouleurFor(cards, couleur, 5);
+    }
+
+    private boolean isCardPresentCouleurFor(List<Card> cards, String couleur, int frequency) {
+        boolean isCouleur = false;
+        int numberIncrementForPair = 0;
+        for (int i = 0; i < cards.size(); i++) {
+            System.out.println(cards.get(i).couleur().equals(couleur));
+            if (cards.get(i).couleur().equals(couleur)) {
+                numberIncrementForPair++;
+            }
+        }
+        if (numberIncrementForPair == frequency) {
+            isCouleur = true;
+        }
+        return isCouleur;
+    }
+
+    private boolean isCardPresentFor(List<Card> cards, String valeur, int frequency) {
         boolean isBrelan = false;
         int numberIncrementForPair = 0;
         for (int i = 0; i < cards.size(); i++) {
@@ -62,13 +83,9 @@ public class JeuDeCarte {
                 numberIncrementForPair++;
             }
         }
-        if (numberIncrementForPair == i2) {
+        if (numberIncrementForPair == frequency) {
             isBrelan = true;
         }
         return isBrelan;
-    }
-
-    public boolean isCarreFor(List<Card> cards, String valeur) {
-        return isCardPresentFor(cards, valeur, 4);
     }
 }
