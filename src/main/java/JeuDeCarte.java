@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class JeuDeCarte {
 
@@ -61,31 +62,19 @@ public class JeuDeCarte {
 
     private boolean isCardPresentCouleurFor(List<Card> cards, String couleur, int frequency) {
         boolean isCouleur = false;
-        int numberIncrementForPair = 0;
-        for (int i = 0; i < cards.size(); i++) {
-            System.out.println(cards.get(i).couleur().equals(couleur));
-            if (cards.get(i).couleur().equals(couleur)) {
-                numberIncrementForPair++;
-            }
-        }
-        if (numberIncrementForPair == frequency) {
-            isCouleur = true;
+        cards = cards.stream().filter(card -> card.couleur().equals(couleur)).collect(Collectors.toList());
+        if (cards.size() == 5) {
+            return true;
         }
         return isCouleur;
     }
 
     private boolean isCardPresentFor(List<Card> cards, String valeur, int frequency) {
-        boolean isBrelan = false;
-        int numberIncrementForPair = 0;
-        for (int i = 0; i < cards.size(); i++) {
-            System.out.println(cards.get(i).valeur().equals(ValeurName.DEUX.getDenomination()));
-            if (cards.get(i).valeur().equals(valeur)) {
-                numberIncrementForPair++;
-            }
+        boolean isFrequency = false;
+        cards = cards.stream().filter(card -> card.valeur().equals(valeur)).collect(Collectors.toList());
+        if (cards.size() == frequency) {
+            return true;
         }
-        if (numberIncrementForPair == frequency) {
-            isBrelan = true;
-        }
-        return isBrelan;
+        return isFrequency;
     }
 }
