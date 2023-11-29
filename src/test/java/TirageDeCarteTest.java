@@ -116,5 +116,31 @@ public class TirageDeCarteTest {
         assertFalse(new JeuDeCarte().isPairFor(cards,"3"));
     }
 
+    @Test
+    void should_say_if_a_hand_has_a_brelan(){
+        List<Card> cards=new ArrayList<>();
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.SPADES.getDenomination()));
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.HEART.getDenomination()));
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+        cards.add(new Card(ValeurName.SEPT.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+        cards.add(new Card(ValeurName.HUIT.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+
+        assertTrue(new JeuDeCarte().isBrelanFor(cards,"2"));
+        assertFalse(new JeuDeCarte().isBrelanFor(cards,"3"));
+    }
+
+    @Test
+    void should_say_if_a_hand_has_a_carre(){
+        List<Card> cards=new ArrayList<>();
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.SPADES.getDenomination()));
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.HEART.getDenomination()));
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.DIAMOND.getDenomination()));
+        cards.add(new Card(ValeurName.HUIT.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+
+        assertTrue(new JeuDeCarte().isCarreFor(cards,"2"));
+        assertFalse(new JeuDeCarte().isCarreFor(cards,"3"));
+    }
+
 
 }
