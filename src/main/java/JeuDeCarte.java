@@ -44,18 +44,24 @@ public class JeuDeCarte {
         return whiteHands;
     }
 
-    public boolean isPair(List<Card> cards) {
-        boolean pairtwo=false;
-        int numberIncrementForPairTwo=0;
-        for(int i=0;i<cards.size();i++){
+    public List<DictionnairePaire> isPair(List<Card> cards, String valeur) {
+        List<DictionnairePaire>dictionnairePaires=new ArrayList<>();
+        cards.forEach(card -> dictionnairePaires.add(new DictionnairePaire(valeur, isPairFor(cards,valeur))));
+        return dictionnairePaires;
+    }
+
+    public boolean isPairFor(List<Card> cards, String valeur) {
+        boolean isPair=false;
+        int numberIncrementForPair=0;
+        for(int i = 0; i< cards.size(); i++){
             System.out.println(cards.get(i).valeur().equals(ValeurName.DEUX.getDenomination()));
-            if(cards.get(i).valeur().equals(ValeurName.DEUX.getDenomination())){
-                numberIncrementForPairTwo++;
+            if(cards.get(i).valeur().equals(valeur)){
+                numberIncrementForPair++;
             }
         }
-        if(numberIncrementForPairTwo==2){
-            pairtwo=true;
+        if(numberIncrementForPair==2){
+            isPair=true;
         }
-        return pairtwo;
+        return isPair;
     }
 }

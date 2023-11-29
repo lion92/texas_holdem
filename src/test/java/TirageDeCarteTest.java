@@ -99,9 +99,21 @@ public class TirageDeCarteTest {
         cards.add(new Card(ValeurName.SEPT.getDenomination(), CouleurName.CLUMBS.getDenomination()));
         cards.add(new Card(ValeurName.HUIT.getDenomination(), CouleurName.CLUMBS.getDenomination()));
 
+        assertTrue(new JeuDeCarte().isPairFor(cards,"2"));
+        assertFalse(new JeuDeCarte().isPairFor(cards,"3"));
+    }
 
+    @Test
+    void should_return_false_because_of_more_than_a_pair(){
+        List<Card> cards=new ArrayList<>();
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.SPADES.getDenomination()));
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.HEART.getDenomination()));
+        cards.add(new Card(ValeurName.DEUX.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+        cards.add(new Card(ValeurName.SEPT.getDenomination(), CouleurName.CLUMBS.getDenomination()));
+        cards.add(new Card(ValeurName.HUIT.getDenomination(), CouleurName.CLUMBS.getDenomination()));
 
-        assertTrue(new JeuDeCarte().isPair(cards));
+        assertFalse(new JeuDeCarte().isPairFor(cards,"2"));
+        assertFalse(new JeuDeCarte().isPairFor(cards,"3"));
     }
 
 
